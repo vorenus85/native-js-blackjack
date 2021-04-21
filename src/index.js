@@ -1,11 +1,11 @@
 /**
  * Import your modules and use them!
  */
-import { externalModule } from './js/myModule';
+import { createDeck } from './js/createDeck';
 
 /**
  * Import your styles!
  */
 import './styles/main.scss';
 
-externalModule.greet();
+createDeck().render();
