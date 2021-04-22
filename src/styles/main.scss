@@ -3,3 +3,23 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
 }
+
+.h-16 {
+  height: 8rem;
+}
+
+.pokercard {
+  flex: 0 0 84px;
+  background-size: cover;
+}
+
+$cards: '2','3','4','5','6','7','8','9','10','A','K','Q','J';
+$cardColors:'H','D','C','S';
+
+@each $card in $cards {
+  @each $cardColor in $cardColors {
+    #card-#{$card}#{$cardColor} {
+      background-image: url("../images/#{$card}#{$cardColor}.png") ;
+    }
+  }
+}

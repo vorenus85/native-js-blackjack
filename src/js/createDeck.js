@@ -21,9 +21,9 @@
     const deck = initDeck()
     for (let index = 0; index < deck.length; index++) {
       const cardID = deck[index];
-      let cardElement = document.createElement('div')
-      cardElement.innerHTML = cardID;
-      cardElement.setAttribute('id', cardID);
+      let cardElement = document.createElement('div');
+      cardElement.classList.add("h-16", "m-2", "pokercard", "col");
+      cardElement.setAttribute('id', 'card-'+cardID);
       app.appendChild(cardElement);
     }
    }
