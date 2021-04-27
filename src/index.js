@@ -1,10 +1,10 @@
 /**
  * Import your modules and use them!
  */
-import { createDeck } from './js/createDeck';
+import { blackJack } from './js/blackJack';
 /**
  * Import your styles!
  */
 import './styles/main.scss';
 
-createDeck().render();
+blackJack.render();
