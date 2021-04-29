@@ -7,4 +7,4 @@ import { blackJack } from './js/blackJack';
  */
 import './styles/main.scss';
 
-blackJack.render();
+blackJack.start;

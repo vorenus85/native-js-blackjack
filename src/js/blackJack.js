@@ -1,8 +1,12 @@
 /**
- * Simple JS module to export
+ * Training modular pattern
  */
 export const blackJack = (function () {
   const deck = initDeck();
+  const getNewCardBTN = document.getElementById("getNewCard")
+  const app = document.getElementById("app");
+  let shuffledCards = shuffle();
+  let playedCards = [];
   function initDeck() {
     const deck = [];
     const colors = ["H", "D", "C", "S"];
@@ -30,7 +34,7 @@ export const blackJack = (function () {
     }
     return deck;
   }
-  function shuffleDeck() {
+  function shuffle() {
     const array = deck;
     //The Fisher-Yates algorith
     for (let i = array.length - 1; i > 0; i--) {
@@ -41,21 +45,38 @@ export const blackJack = (function () {
     }
     return array;
   }
-  function render() {
-    const app = document.getElementById("app");
-    const deck = shuffleDeck();
-    for (let index = 0; index < deck.length; index++) {
+  function addPlayedCard(cardID){
+    playedCards.push(cardID)
+  }
+  function removeCard(numberOfCard){
+    shuffledCards.splice(0,numberOfCard)
+  }
+  function renderCard(numberOfCard = 1) {
+    const deck = shuffledCards;
+    //console.log(playedCards)
+    //console.log(shuffledCards)
+    for (let index = 0; index < numberOfCard; index++) {
       const cardID = deck[index];
+      addPlayedCard(cardID)
       let cardElement = document.createElement("div");
       cardElement.classList.add("h-16", "m-2", "pokercard", "col");
       cardElement.setAttribute("id", "card-" + cardID);
       app.appendChild(cardElement);
     }
+    removeCard(numberOfCard)
+    //console.log(playedCards)
+    //console.log(shuffledCards)
+  }
+  function init(){
+    renderCard(2);
+    getNewCard();
+  }
+  function getNewCard(){
+    getNewCardBTN.onclick = function(){
+      renderCard(1)
+    }
   }
   return {
-    deck: deck,
-    render: render,
-    shuffle: shuffleDeck,
-    init: initDeck,
+    start: init()
   };
 })();
