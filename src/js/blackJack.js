@@ -3,8 +3,11 @@
  */
 export const blackJack = (function () {
   const deck = initDeck();
-  const getNewCardBTN = document.getElementById("getNewCard")
-  const app = document.getElementById("app");
+  const getNewCardBTN = document.getElementById("getNewCard");
+  const startGameBTN = document.getElementById("startGame");
+  const stopBTN = document.getElementById("stop")
+  const gamer = document.getElementById("gamer");
+  const dealer = document.getElementById("dealer");
   let shuffledCards = shuffle();
   let playedCards = [];
   function initDeck() {
@@ -51,7 +54,7 @@ export const blackJack = (function () {
   function removeCard(numberOfCard){
     shuffledCards.splice(0,numberOfCard)
   }
-  function renderCard(numberOfCard = 1) {
+  function renderCard(numberOfCard = 1, renderDeck = gamer) {
     const deck = shuffledCards;
     //console.log(playedCards)
     //console.log(shuffledCards)
@@ -61,21 +64,31 @@ export const blackJack = (function () {
       let cardElement = document.createElement("div");
       cardElement.classList.add("h-16", "m-2", "pokercard", "col");
       cardElement.setAttribute("id", "card-" + cardID);
-      app.appendChild(cardElement);
+      renderDeck.appendChild(cardElement);
     }
     removeCard(numberOfCard)
     //console.log(playedCards)
     //console.log(shuffledCards)
   }
-  function init(){
+  function startGame(){
     renderCard(2);
     getNewCard();
+  }
+  function init(){
+    return false;
   }
   function getNewCard(){
     getNewCardBTN.onclick = function(){
       renderCard(1)
     }
   }
+  startGameBTN.onclick = function(){
+    startGame();
+    startGameBTN.classList.toggle("d-none")
+    getNewCardBTN.classList.remove("d-none")
+    stopBTN.classList.remove("d-none")
+  }
+  // public methods and properties
   return {
     start: init()
   };
