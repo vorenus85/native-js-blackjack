@@ -23,3 +23,22 @@ $cardColors:'H','D','C','S';
     }
   }
 }
+
+.player-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.points {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: white;
+  background: lightblue;
+  border-radius: 100%;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
